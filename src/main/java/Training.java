@@ -7,47 +7,37 @@ public class Training {
     public static void main(String[] args) {
 
 
-      List<Integer> a = new ArrayList<>();
-      a.add(4);
-      a.add(6);
-      a.add(5);
-      a.add(3);
-      a.add(3);
-      a.add(1);
+      List<Integer> a = new ArrayList<Integer>();
+      a.add(73);
+      a.add(67);
+      a.add(38);
+      a.add(33);
+      List<Integer> roundedGrade = new ArrayList<>();
 
-      Integer[] tabA = new Integer[a.size()];
-      Integer [] max = new Integer[a.size()-1];
-      int corectDifference;
 
-      for (int k=0;k<a.size();k++) {
-          tabA[k] = a.get(k);
+      for(int i =0;i<a.size();i++){
+          Integer grade = a.get(i);
+          int dividedByFive = grade / 5;
+
+         if(grade <38 ){
+            roundedGrade.add(grade);
+            }
+         else {
+                if (grade % 5 == 0) {
+                    roundedGrade.add(grade);
+                } else if (((dividedByFive + 1) * 5) - grade >= 3) {
+                    roundedGrade.add(grade);
+                } else {
+                    Integer newSum = (dividedByFive + 1) * 5;
+                    roundedGrade.add(newSum);
+                }
+         }
       }
-        Arrays.sort(tabA, Collections.reverseOrder());
-      for(int i = 0; i<a.size()-1;i++){
-          corectDifference = 0;
-          for(int j = i;j<a.size()-1;j++){
-              Integer difference = tabA[i] - tabA[j+1];
-              System.out.println(difference);
-              if(Math.abs(difference) <=1){
-               corectDifference ++;
-              }
-          }
-          max[i] = corectDifference;
-
-      }
-        System.out.println(Arrays.toString(max));
-        Arrays.sort(max, Collections.reverseOrder());
-        int answer = max[0] + 1;
-      System.out.println(Arrays.toString(max));
-        System.out.println(answer);
-
-
-
-
-
-
+      System.out.println(roundedGrade.toString());
     }
+
 }
+
 
 
 
